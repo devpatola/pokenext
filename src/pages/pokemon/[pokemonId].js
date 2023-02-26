@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "@/styles/PokemonId.module.css";
 
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -37,6 +38,12 @@ export async function getStaticProps(context) {
 }
 
 export default function PokemonId({ pokemon }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Carregando...</div>;
+  }
+
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.title}>{pokemon.name}</h1>
