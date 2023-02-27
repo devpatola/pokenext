@@ -14,9 +14,7 @@ export async function getStaticProps() {
   });
 
   return {
-    props: {
-      pokemon: data.results,
-    },
+    props: { pokemon: data.results },
   };
 }
 

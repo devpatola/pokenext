@@ -60,12 +60,12 @@ export default function PokemonId({ pokemon }) {
       <div>
         <h3>Tipo:</h3>
         <div className={styles.types_container}>
-          {pokemon.types.map((type, index) => (
+          {pokemon.types.map(({ type }) => (
             <span
-              key={index}
-              className={`${styles.type} ${styles[`type_${type.type.name}`]}`}
+              key={type.name}
+              className={`${styles.type} ${styles["type_" + type.name]}`}
             >
-              {type.type.name}
+              {type.name}
             </span>
           ))}
         </div>
