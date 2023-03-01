@@ -3,9 +3,8 @@ import Image from "next/image";
 import Card from "@/components/Card";
 
 export async function getStaticProps() {
-  const maxPokemon = 251;
   const endpoint = "https://pokeapi.co/api/v2/pokemon/";
-
+  const maxPokemon = 251;
   const response = await fetch(`${endpoint}/?limit=${maxPokemon}`);
   const data = await response.json();
 

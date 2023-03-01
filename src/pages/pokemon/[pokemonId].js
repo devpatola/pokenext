@@ -4,9 +4,8 @@ import Image from "next/image";
 import styles from "@/styles/PokemonId.module.css";
 
 export async function getStaticPaths() {
-  const maxPokemon = 251;
   const endpoint = "https://pokeapi.co/api/v2/pokemon/";
-
+  const maxPokemon = 251;
   const response = await fetch(`${endpoint}/?limit=${maxPokemon}`);
   const data = await response.json();
 
@@ -26,7 +25,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const id = context.params.pokemonId;
-
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const data = await response.json();
 
@@ -40,9 +38,7 @@ export async function getStaticProps(context) {
 export default function PokemonId({ pokemon }) {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Carregando...</div>;
-  }
+  if (router.isFallback) return <div>Carregando...</div>;
 
   return (
     <div className={styles.pokemon_container}>
